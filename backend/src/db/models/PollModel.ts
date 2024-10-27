@@ -6,7 +6,9 @@ interface PollAttributes {
   date: Date;
 }
 
-class Poll extends Model<PollAttributes> implements PollAttributes {
+interface PollCreationAttributes extends Optional<PollAttributes, 'id'> {}
+
+class Poll extends Model<PollAttributes, PollCreationAttributes> implements PollAttributes {
   public id!: number;
   public date!: Date;
 }
@@ -14,9 +16,9 @@ class Poll extends Model<PollAttributes> implements PollAttributes {
 Poll.init(
   {
     id: {
-      type: DataTypes.BIGINT,
-      autoIncrement: true,
+      type: DataTypes.INTEGER,
       primaryKey: true,
+      autoIncrement: true,
     },
     date: {
       type: DataTypes.DATE,

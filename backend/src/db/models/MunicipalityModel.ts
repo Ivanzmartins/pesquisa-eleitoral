@@ -1,19 +1,22 @@
-import { DataTypes, Model, Optional } from 'sequelize';
+// models/Municipality.ts
+import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../database';
 
-interface CandidateAttributes {
+interface MunicipalityAttributes {
   id: number;
   name: string;
+  state: string;
+  population: number;
 }
 
-interface CandidateCreationAttributes extends Optional<CandidateAttributes, 'id'> {}
-
-class Candidate extends Model<CandidateAttributes, CandidateCreationAttributes> implements CandidateAttributes {
+class Municipality extends Model<MunicipalityAttributes> implements MunicipalityAttributes {
   public id!: number;
   public name!: string;
+  public state!: string;
+  public population!: number;
 }
 
-Candidate.init(
+Municipality.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -24,11 +27,19 @@ Candidate.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    state: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    population: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     sequelize,
-    tableName: 'candidates',
+    tableName: 'municipalities',
   }
 );
 
-export default Candidate;
+export default Municipality;

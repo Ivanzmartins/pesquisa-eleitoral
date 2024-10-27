@@ -8,12 +8,12 @@ interface CandidateAttributes {
 
 interface CandidateCreationAttributes extends Optional<CandidateAttributes, 'id'> {}
 
-class CandidateModel extends Model<CandidateAttributes, CandidateCreationAttributes> implements CandidateAttributes {
+class Candidate extends Model<CandidateAttributes, CandidateCreationAttributes> implements CandidateAttributes {
   public id!: number;
   public name!: string;
 }
 
-CandidateModel.init(
+Candidate.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -31,4 +31,4 @@ CandidateModel.init(
   }
 );
 
-export default CandidateModel;
+export default Candidate;
