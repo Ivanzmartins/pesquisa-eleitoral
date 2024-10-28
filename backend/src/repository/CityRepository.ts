@@ -6,6 +6,24 @@ class CityRepository {
     return City.findAll();
   }
 
+  async lastPopulationUpdate(): Promise<Date | string> {
+    try {
+      const lastUpdated = await City.findOne({
+        order: [['updated_at', 'DESC']],
+      });
+      if (lastUpdated && lastUpdated.updatedAt) {
+        return lastUpdated.updatedAt;
+      }
+      return 'No population updates found';
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new Error(`Error getting last population update: ${error.message}`);
+      } else {
+        throw new Error('Error getting last population update');
+      }
+    }
+  }
+
   async updatePopulationByNameAndState(updates: { name: string; state: string; population: number }[], batchSize = 500) {
     const transaction = await City.sequelize?.transaction();
 
