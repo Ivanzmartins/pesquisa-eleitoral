@@ -1,1 +1,1 @@
-{"root":["./src/App.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/FilterBar.tsx","./src/components/InvoiceTable.tsx","./src/components/UploadModal.tsx","./src/pages/Dashboard.tsx","./src/pages/InvoiceLibrary.tsx"],"version":"5.6.3"}
+{"root":["./src/App.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/api/api.ts","./src/api/pollData.ts","./src/components/RefreshButton.tsx","./src/components/UploadButton.tsx","./src/components/VoteEvolutionChart.tsx","./src/pages/Dashboard.tsx","./src/types/PollData.ts","./src/utils/transformData.ts"],"version":"5.6.3"}
