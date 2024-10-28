@@ -1,23 +1,26 @@
+// db/models/PollResultModel.ts
+
 import { DataTypes, Model, Optional } from 'sequelize';
 import { sequelize } from '../database';
-import Candidate from './CandidateModel';
-import Municipality from './MunicipalityModel';
-import Poll from './PollModel';
 
 interface PollResultAttributes {
   id: number;
-  pollId: number;
-  municipalityId: number;
-  candidateId: number;
+  externalId: string;
+  pollDate: Date;
+  candidateName: string;
+  cityName: string;
+  state: string;
 }
 
 interface PollResultCreationAttributes extends Optional<PollResultAttributes, 'id'> {}
 
 class PollResult extends Model<PollResultAttributes, PollResultCreationAttributes> implements PollResultAttributes {
   public id!: number;
-  public pollId!: number;
-  public municipalityId!: number;
-  public candidateId!: number;
+  public externalId!: string;
+  public pollDate!: Date;
+  public candidateName!: string;
+  public cityName!: string;
+  public state!: string;
 }
 
 PollResult.init(
@@ -27,39 +30,36 @@ PollResult.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    pollId: {
-      type: DataTypes.INTEGER,
+    externalId: {
+      type: DataTypes.STRING,
       allowNull: false,
-      references: {
-        model: Poll,
-        key: 'id',
-      },
+      field: 'external_id',
     },
-    municipalityId: {
-      type: DataTypes.INTEGER,
+    pollDate: {
+      type: DataTypes.DATE,
       allowNull: false,
-      references: {
-        model: Municipality,
-        key: 'id',
-      },
+      field: 'poll_date',
     },
-    candidateId: {
-      type: DataTypes.INTEGER,
+    candidateName: {
+      type: DataTypes.STRING,
       allowNull: false,
-      references: {
-        model: Candidate,
-        key: 'id',
-      },
+      field: 'candidate_name',
+    },
+    cityName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      field: 'city_name',
+    },
+    state: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
   },
   {
     sequelize,
     tableName: 'poll_results',
+    timestamps: false,
   }
 );
-
-PollResult.belongsTo(Candidate, { foreignKey: 'candidateId' });
-PollResult.belongsTo(Municipality, { foreignKey: 'municipalityId' });
-PollResult.belongsTo(Poll, { foreignKey: 'pollId' });
 
 export default PollResult;
