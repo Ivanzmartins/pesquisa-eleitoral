@@ -1,5 +1,3 @@
-// db/models/PollResultModel.ts
-
 import { DataTypes, Model, Optional } from 'sequelize';
 import { sequelize } from '../database';
 

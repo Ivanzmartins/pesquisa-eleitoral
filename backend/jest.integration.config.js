@@ -1,13 +1,11 @@
-// jest.integration.config.js
-module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-  testTimeout: 30000,
-  verbose: true,
-  transform: {
-    '^.+\\.ts?$': 'ts-jest',
-  },
-  moduleFileExtensions: ['ts', 'js', 'json', 'node'],
-  testMatch: ['**/src/tests/integration/**/*.test.ts'],
-}
+
+export const preset = 'ts-jest';
+export const testEnvironment = 'node';
+export const setupFilesAfterEnv = ['<rootDir>/jest.setup.ts'];
+export const testTimeout = 30000;
+export const verbose = true;
+export const transform = {
+  '^.+\\.ts?$': 'ts-jest',
+};
+export const moduleFileExtensions = ['ts', 'js', 'json', 'node'];
+export const testMatch = ['**/src/tests/integration/**/*.test.ts'];

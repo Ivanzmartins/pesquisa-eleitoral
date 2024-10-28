@@ -1,5 +1,3 @@
-// services/PollService.ts
-
 import fs from 'fs';
 import { processCsvFile, PollCsvRow } from '../utils/csvProcessor';
 import PollResultRepository from '../repository/PollResultRepository';
