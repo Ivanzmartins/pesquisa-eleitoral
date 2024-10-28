@@ -7,5 +7,6 @@ const upload = multer({ dest: 'uploads/' });
 const pollRouter = Router();
 
 pollRouter.post('/', upload.single('file'), pollController.uploadPollData);
+pollRouter.get('/', pollController.getPollResults);
 
 export default pollRouter;

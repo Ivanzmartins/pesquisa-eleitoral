@@ -17,6 +17,17 @@ class PollController {
       res.status(500).json({ message: 'An error occurred while processing the CSV' });
     }
   }
+
+  async getPollResults(_req: Request, res: Response): Promise<void> {
+    try {
+      const results = await pollService.calculateVoteIntentions();
+
+      res.status(200).json({ results });
+    } catch (error) {
+      console.error('Error getting poll results:', error);
+      res.status(500).json({ message: 'An error occurred while getting poll results' });
+    }
+  }
 }
 
 export default new PollController();
