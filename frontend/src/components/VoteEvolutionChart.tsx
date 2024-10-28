@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import {
   BarChart,
@@ -33,15 +34,15 @@ const VoteEvolutionBarChart: React.FC = () => {
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
       }
-    };// export const
+    };
 
     fetchData();
   }, []);
 
   return (
-    <div style={{ width: '100%', height: 300 }}>
-      <h2>Evolução Temporal das Intenções de Votos</h2>
-      <ResponsiveContainer>
+    <div className="w-[500px] h-[500px] mx-auto">
+      <h2 className="text-center">Evolução Temporal das Intenções de Votos</h2>
+      <ResponsiveContainer width="100%" height="100%">
         <BarChart data={chartData}>
           <XAxis dataKey="date" />
           <YAxis />

@@ -11,14 +11,14 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="p-4">
-      {/* Flex container para os botões */}
-      <div className="flex justify-between items-center mb-4 w-full">
+    <div className="w-full p-4">
+      <div className="flex justify-between items-center mb-4">
         <RefreshButton onRefresh={onRefresh} />
         <UploadButton onUploadSuccess={onRefresh} />
       </div>
-      {/* Gráfico */}
-      <VoteEvolutionBarChart key={refreshKey} />
+      <div className="w-[80%] mx-auto">
+        <VoteEvolutionBarChart key={refreshKey} />
+      </div>
     </div>
   );
 };
